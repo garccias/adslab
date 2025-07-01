@@ -1,0 +1,84 @@
+# DOCUMENTAÇÃO DA API - RESTAURANTE
+
+## Clientes 
+
+
+POST /clientes : Cadastra um novo cliente.
+{
+    "nome": "string",
+    "cpf_cliente": "string"
+}
+- O CPF deve ser válido (formato com ou sem pontuação) e único no sistema.
+
+GET /clientes : Lista todos os clientes cadastrados.
+
+GET /clientes/:id : Busca um cliente específico pelo seu ID.
+- O ':id' na rota deve ser substituído pelo ID numérico do cliente.
+
+PUT /clientes/:id : Atualiza o nome de um cliente específico.
+{
+    "nome": "string"
+}
+- O ':id' na rota deve ser substituído pelo ID do cliente a ser atualizado.
+
+DELETE /clientes/:id : Remove um cliente do sistema.
+- O ':id' na rota deve ser substituído pelo ID do cliente a ser removido.
+
+
+## Pratos
+-----------------------------------
+
+POST /pratos : Cadastra um novo prato no cardápio.
+{
+    "nome": "string",
+    "descricao": "string",
+    "preco": number
+}
+- 'nome' deve conter apenas letras e espaços, com 3 a 50 caracteres.
+- 'preco' deve ser um número positivo.
+
+GET /pratos : Lista todos os pratos disponíveis no cardápio.
+
+GET /pratos/:id : Busca um prato específico pelo seu ID.
+- O ':id' na rota deve ser substituído pelo ID do prato.
+
+PUT /pratos/:id : Atualiza os dados de um prato existente.
+{
+    "nome": "string",
+    "descricao": "string",
+    "preco": number
+}
+- O ':id' na rota deve ser substituído pelo ID do prato a ser atualizado.
+
+DELETE /pratos/:id : Remove um prato do cardápio.
+- O ':id' na rota deve ser substituído pelo ID do prato a ser removido.
+
+
+## Pedidos
+-----------------------------------
+
+POST /pedidos : Registra um novo pedido para um cliente.
+{
+    "cliente_id": integer,
+    "pratos": [
+        { "id": integer, "quantidade": integer },
+        { "id": integer, "quantidade": integer }
+    ]
+}
+- O 'cliente_id' deve corresponder a um cliente já existente.
+- 'pratos' é uma lista de objetos, cada um contendo o 'id' de um prato existente e a 'quantidade' desejada.
+
+GET /pedidos : Lista um resumo de todos os pedidos realizados.
+
+GET /pedidos/:id : Busca os detalhes completos de um pedido específico, incluindo a lista de itens.
+- O ':id' na rota deve ser substituído pelo ID do pedido.
+
+
+## Relatórios
+-----------------------------------
+
+GET /relatorios/pratos-mais-pedidos : Lista todos os pratos, ordenados pela quantidade total que já foi pedida.
+
+GET /relatorios/top-clientes-pedidos : Lista os 5 clientes que mais fizeram pedidos (em número de transações).
+
+GET /relatorios/top-clientes-gasto : Lista os 5 clientes que mais gastaram (em valor total).

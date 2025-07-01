@@ -1,0 +1,13 @@
+# Ignorar a pasta de dependências do Node.js
+node_modules/
+
+# Ignorar logs de erro do NPM
+npm-debug.log*
+
+# Ignorar o arquivo do banco de dados de desenvolvimento SQLite
+# É uma boa prática não enviar dados de teste para o repositório
+*.sqlite
+
+# Arquivos de sistema do MacOS e Windows
+.DS_Store
+Thumbs.db

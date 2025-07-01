@@ -1,0 +1,30 @@
+{
+  "name": "ads-lab",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garccias/adslab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/garccias/adslab/issues"
+  },
+  "homepage": "https://github.com/garccias/adslab#readme",
+  "description": "",
+  "dependencies": {
+    "cpf-cnpj-validator": "^1.0.3",
+    "express": "^5.1.0",
+    "knex": "^3.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
