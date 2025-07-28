@@ -1,0 +1,119 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --cor-primaria: #0d6efd; /* Azul */
+  --cor-sucesso: #198754; /* Verde */
+  --cor-perigo: #dc3545; /* Vermelho */
+  --cor-fundo: #f8f9fa;
+  --cor-superficie: #ffffff;
+  --cor-texto: #212529;
+  --cor-borda: #dee2e6;
+  --sombra: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --raio-borda: 8px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--raio-borda);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+button[type="submit"] {
+  background-color: var(--cor-primaria);
+  color: white;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+button[type="submit"]:disabled {
+  background-color: #ced4da;
+  cursor: not-allowed;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  box-sizing: border-box; /* Garante que padding não afete a largura total */
+  font-size: 1rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--cor-borda);
+  margin: 2rem 0;
+}
+
+form {
+  background-color: var(--cor-superficie);
+  padding: 2rem;
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra);
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+form div {
+  margin-bottom: 1rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.item-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cor-superficie);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra);
+}
+
+.item-list button {
+  margin-left: 0.5rem;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+/* Botão de Deletar com a cor de perigo */
+.item-list button:last-child {
+    background-color: var(--cor-perigo);
+    color: white;
+}
+.item-list button:last-child:hover {
+    opacity: 0.9;
+}
+
+.item-list button:first-child {
+    background-color: #6c757d;
+    color: white;
+}
+.item-list button:first-child:hover {
+    opacity: 0.9;
+}

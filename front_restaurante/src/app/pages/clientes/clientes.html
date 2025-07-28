@@ -1,0 +1,39 @@
+<h2>Nossos Clientes</h2>
+
+<form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+  <h3>@if (clienteIdSendoEditado) { Editando Cliente } @else { Cadastrar Novo Cliente }</h3>
+  <div>
+    <label for="nome">Nome:</label>
+    <input id="nome" type="text" formControlName="nome">
+  </div>
+  <div>
+    <label for="cpf">CPF:</label>
+    <input id="cpf" type="text" formControlName="cpf_cliente">
+  </div>
+  <button type="submit" [disabled]="clienteForm.invalid">
+    @if (clienteIdSendoEditado) { Salvar Alterações } @else { Salvar Cliente }
+  </button>
+  @if (clienteIdSendoEditado) {
+    <button type="button" (click)="onCancelEdit()">Cancelar Edição</button>
+  }
+</form>
+
+<hr>
+
+<p>Lista de clientes cadastrados no sistema.</p>
+<ul>
+  @for (cliente of clientes$ | async; track cliente.id) {
+    <li class="item-list">
+      <div>
+        <strong>Nome:</strong> {{ cliente.nome }} <br>
+        <strong>CPF:</strong> {{ cliente.cpf }}
+      </div>
+      <div>
+        <button (click)="onEdit(cliente)">Editar</button>
+        <button (click)="onDelete(cliente.id)">Deletar</button>
+      </div>
+    </li>
+  } @empty {
+    <li>Nenhum cliente cadastrado ainda.</li>
+  }
+</ul>

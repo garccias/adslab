@@ -1,0 +1,34 @@
+<h2>Registrar Novo Pedido</h2>
+
+<form [formGroup]="pedidoForm" (ngSubmit)="onSubmit()" class="form-pedido">
+
+  <div class="form-section">
+    <label for="cliente">Selecione o Cliente:</label>
+    <select id="cliente" formControlName="cliente_id">
+      <option value="">-- Escolha um cliente --</option>
+      @for(cliente of clientes$ | async; track cliente.id) {
+        <option [value]="cliente.id">{{ cliente.nome }}</option>
+      }
+    </select>
+  </div>
+
+  <hr>
+
+  <div class="form-section" formArrayName="pratos">
+    <h3>Cardápio:</h3>
+    <div class="pratos-list">
+      @for(prato of pratos; track prato.id; let i = $index) {
+        <div class="prato-item">
+          <span>{{ prato.nome }} - (R$ {{ prato.preco }})</span>
+          <input type="number" min="0" [formControlName]="i">
+        </div>
+      }
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="form-section">
+    <button type="submit" [disabled]="pedidoForm.invalid">Finalizar Pedido</button>
+  </div>
+</form>

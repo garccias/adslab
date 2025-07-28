@@ -1,0 +1,15 @@
+# Estágio 1: Build - Instala dependências e copia o código
+FROM node:20-alpine
+WORKDIR /app
+COPY backend/package*.json ./
+RUN npm install
+COPY backend/ ./
+
+# Cria a pasta que será usada pelo volume de dados SQLite (se usar SQLite)
+RUN mkdir -p /app/data
+
+# Expõe a porta que a nossa API usa
+EXPOSE 3000
+
+# Comando para rodar as migrations e então iniciar o servidor
+CMD ["sh", "-c", "npx knex migrate:latest && node src/server.js"]

@@ -1,0 +1,49 @@
+<h2>Cardápio</h2>
+
+<form [formGroup]="pratoForm" (ngSubmit)="onSubmit()">
+
+  <h3>@if (pratoIdSendoEditado) { Editando Prato } @else { Adicionar Novo Prato }</h3>
+  
+  <div>
+    <label for="prato-nome">Nome:</label>
+    <input id="prato-nome" type="text" formControlName="nome">
+  </div>
+  
+  <div>
+    <label for="prato-descricao">Descrição:</label>
+    <textarea id="prato-descricao" formControlName="descricao"></textarea>
+  </div>
+  
+  <div>
+    <label for="prato-preco">Preço:</label>
+    <input id="prato-preco" type="number" formControlName="preco">
+  </div>
+  
+  <button type="submit" [disabled]="pratoForm.invalid">
+    @if (pratoIdSendoEditado) { Salvar Alterações } @else { Salvar Prato }
+  </button>
+
+  @if (pratoIdSendoEditado) {
+    <button type="button" (click)="onCancelEdit()">Cancelar Edição</button>
+  }
+</form>
+
+<hr>
+
+<p>Pratos disponíveis no restaurante.</p>
+<ul>
+  @for (prato of pratos$ | async; track prato.id) {
+    <li class="item-list">
+      <div>
+        <strong>{{ prato.nome }}</strong> - R$ {{ prato.preco }}
+        <p><small>{{ prato.descricao }}</small></p>
+      </div>
+      <div>
+        <button (click)="onEdit(prato)">Editar</button>
+        <button (click)="onDelete(prato.id)">Deletar</button>
+      </div>
+    </li>
+  } @empty {
+    <li>Nenhum prato cadastrado ainda.</li>
+  }
+</ul>

@@ -1,0 +1,16 @@
+# Estágio 1: Construir a aplicação Angular
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY front_restaurante/package*.json ./
+RUN npm install
+COPY front_restaurante/ ./
+RUN npm run build
+
+# Estágio 2: Servir os arquivos com Nginx
+FROM nginx:stable-alpine
+# Copia os arquivos da pasta de build do Angular para a pasta padrão do Nginx
+COPY --from=builder /app/dist/front_restaurante/browser/ /usr/share/nginx/html
+# Copia as regras de configuração do nosso servidor Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80

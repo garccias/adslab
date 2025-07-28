@@ -1,0 +1,36 @@
+<h2>Relatórios Gerenciais</h2>
+
+<div class="relatorios-container">
+  <div class="relatorio">
+    <h3>Pratos Mais Pedidos</h3>
+    <ul>
+      @for(item of pratosMaisPedidos$ | async; track item.nome) {
+        <li>{{ item.nome }} ({{ item.quantidade_total_pedida }} unidades)</li>
+      } @empty {
+        <li>Nenhum dado para exibir. Crie alguns pedidos primeiro.</li>
+      }
+    </ul>
+  </div>
+
+  <div class="relatorio">
+    <h3>Top 5 Clientes (por Nº de Pedidos)</h3>
+    <ul>
+      @for(item of topClientesPedidos$ | async; track item.nome) {
+        <li>{{ item.nome }} ({{ item.total_de_pedidos }} pedidos)</li>
+      } @empty {
+        <li>Nenhum dado para exibir.</li>
+      }
+    </ul>
+  </div>
+
+  <div class="relatorio">
+    <h3>Top 5 Clientes (por Valor Gasto)</h3>
+    <ul>
+      @for(item of topClientesGasto$ | async; track item.nome) {
+        <li>{{ item.nome }} (R$ {{ item.total_gasto }})</li>
+      } @empty {
+        <li>Nenhum dado para exibir.</li>
+      }
+    </ul>
+  </div>
+</div>

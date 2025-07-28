@@ -1,0 +1,31 @@
+/* src/app/app.css - Estilos do componente principal */
+header {
+  background-color: var(--cor-superficie);
+  padding: 1rem 2rem;
+  box-shadow: var(--sombra);
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: var(--cor-primaria);
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color 0.2s;
+}
+
+nav a:hover {
+  border-bottom-color: var(--cor-primaria);
+}
+
+main {
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
